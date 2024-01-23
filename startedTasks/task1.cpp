@@ -58,7 +58,9 @@ bool checkInBase(string password){
 int main(){
     string password = " ";
     int reliability;
+    system("chcp 65001");
     while (true) {
+        cout << "\033[2J\033[1;1H"; //очистка
         reliability = 4;
         cout << "ПРОВЕРКА ПАРОЛЯ\n" << endl;
 
@@ -100,6 +102,6 @@ int main(){
         cout << "\nВведите пароль: ";
         getline(cin, password);
 
-        cout << "\033[2J\033[1;1H"; //очистка
+
     }
 }
