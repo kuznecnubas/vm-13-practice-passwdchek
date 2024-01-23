@@ -31,7 +31,7 @@ int checkSymbols(string password){
     for (int i = 0; i < password.length(); i++){
         if (password[i] == '-' || password[i] == '!' || password[i] == '#' || password[i] == '$' ||
             password[i] == '%' || password[i] == '&' || password[i] == '*' || password[i] == '@' ||
-            password[i] == '^') symbols++;
+            password[i] == '^' || password[i] == '"' || password[i] == '=' || password[i] == '+') symbols++;
     }
     return symbols;
 }
@@ -64,20 +64,20 @@ int main(){
         reliability = 4;
         cout << "ПРОВЕРКА ПАРОЛЯ\n" << endl;
 
-        if (checkLettersUpper(password) <= 0){
-            cout << "Пароль должен содержать большие буквы (QWE)" << endl;
+        if (checkLettersUpper(password) <= 1){
+            cout << "Пароль должен содержать не менее 2 больших букв (QWE)" << endl;
             reliability--;
         }
-        if (checkLettersLower(password) <= 0) {
-            cout << "Пароль должен содержать маленькие буквы (qwe)" << endl;
+        if (checkLettersLower(password) <= 1) {
+            cout << "Пароль должен содержать не менее 2 маленьких букв (qwe)" << endl;
             reliability--;
         }
-        if (checkDigits(password) <= 0) {
-            cout << "Пароль должен содержать цифры (123)" << endl;
+        if (checkDigits(password) <= 1) {
+            cout << "Пароль должен содержать не менее 2 цифр (123)" << endl;
             reliability--;
         }
-        if (checkSymbols(password) <= 0) {
-            cout << "Пароль должен содержать символы (!@#)" << endl;
+        if (checkSymbols(password) <= 1) {
+            cout << "Пароль должен содержать не менее 2 символов (!@#)" << endl;
             reliability--;
         }
 
