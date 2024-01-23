@@ -58,13 +58,10 @@ bool checkInBase(string password){
 int main(){
     string password = " ";
     int reliability;
-
-    system("ls");
     while (true) {
         reliability = 4;
-        cout << "\033[2J\033[1;1H"; //очистка
+        cout << "ПРОВЕРКА ПАРОЛЯ\n" << endl;
 
-        cout << "Проверка пароля\n" << endl;
         if (checkLettersUpper(password) <= 0){
             cout << "Пароль должен содержать большие буквы (QWE)" << endl;
             reliability--;
@@ -82,22 +79,27 @@ int main(){
             reliability--;
         }
 
-        if (reliability == 4){
-            cout << "Пароль надёжный" << endl;
+        if(checkInBase(password)){
+            cout << "\nПароль найден в базе использованных" << endl;
         }
-        else if (reliability == 3){
-            cout << "\nПароль средний" << endl;
+        else{
+            if (reliability == 4){
+                cout << "Пароль надёжный" << endl;
+            }
+            else if (reliability == 3){
+                cout << "\nПароль средний" << endl;
+            }
+            else if (reliability == 2){
+                cout << "\nПароль слабый" << endl;
+            }
+            else if (reliability == 1){
+                cout << "\nПароль очень слабый" << endl;
+            }
         }
-        else if (reliability == 2){
-            cout << "\nПароль слабый" << endl;
-        }
-        else if (reliability == 1){
-            cout << "\nПароль очень слабый" << endl;
-        }
-
-        if(checkInBase(password)) cout << "\nПароль найден в базе использованных" << endl;
 
         cout << "\nВведите пароль: ";
         getline(cin, password);
+
+        cout << "\033[2J\033[1;1H"; //очистка
     }
 }
